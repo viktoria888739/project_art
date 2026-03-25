@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Doloto';
+    src: url('../assets/fonts/Doloto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    letter-spacing: 5%;
+    font-style: normal;
+}

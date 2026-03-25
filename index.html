@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="screen1">
+        <div class="screen1_top">
+            <div class="screen1_top_left">ЛЕСНЫЕ ОТЕЛИ</div>
+            <div class="screen1_top_right">0/5 В КОРЗИНЕ</div>
+        </div>
+
+        <div class="popup_overlay" id="popupOverlay">
+            <div class="popup_content">
+                <button class="popup_close" id="closePopup">×</button>
+                <div class="popup_text">
+                    ВНИМАНИЕ!<br>
+                    ИДЕТ СТРОЙКА,
+                    МОГУТ ПАДАТЬ ПРЕДМЕТЫ
+                </div>
+            </div>
+        </div>
+
+        <div class="summary_popup" id="summaryPopup" style="display: none;">
+            <div class="summary_content">
+                <button class="summary_close" id="closeSummary">×</button>
+                <div class="summary_text">
+                    От суровых сторожек XIX века до арт-объектов XXI века: лесной отель прошёл путь от убежища лесника до пространства свободы для хиппи, затем до научно обоснованной терапии для японских «сарариманов». Прорыв 2008 года в Швеции превратил его в искусство, а бум цифрового детокса научил индустрию балансу между отключением и комфортом. Сегодня технологии не изгоняются из леса, а становятся невидимыми проводниками в мир природы. Лес перестал быть декорацией — он стал соавтором.
+                </div>
+            </div>
+        </div>
+
+        <div class="screen1_bottom">
+            <div class="screen1_bottom_box"></div>
+            <div class="screen1_bottom_floor"></div>
+        </div>
+    </div>
+    <div class="screen2">
+        <div class="puzzle">
+            <div class="puzzle_content" id="puzzleArea"></div>
+
+            <div class="text_content_puzzle">Арт-резиденция на деревьях Treehotel. “UFO” - один из<br>номеров.
+                Выглядит
+                как летающая тарелка, Подвешен<br>среди деревьев в сосновом лесу </div>
+        </div>
+
+    </div>
+    <div class="screen3">
+        <div class="screen3_left_part">
+            <div class="screen3_title">ХРОНОЛОГИЯ ПОЯВЛЕНИЯ ЛЕСНЫХ ОТЕЛЕЙ</div>
+            <div class="wall"></div>
+        </div>
+        <div class="arch"></div>
+        <div class="timeline_texts">
+            <div class="timeline_item" id="timeline1">XIX век: Первые «домики лесника» в Европе</div>
+            <div class="timeline_item" id="timeline2">1960-е: Арт-коммуны в лесах Калифорнии</div>
+            <div class="timeline_item" id="timeline3">2008 год: Treehotel в Швеции Рождение индустрии</div>
+            <div class="timeline_item" id="timeline4">2020: Пик «цифрового детокса» и арт-терапии</div>
+        </div>
+    </div>
+    <div class="screen4">
+        <div class="screen4_top">
+            <div class="music">
+                <div class="music_grid">
+                    <div class="music_row">
+                        <button class="music_btn" id="music1" data-sound="sound1">ДО</button>
+                        <button class="music_btn" id="music2" data-sound="sound2">РЕ</button>
+                        <button class="music_btn" id="music3" data-sound="sound3">МИ</button>
+                        <button class="music_btn" id="music4" data-sound="sound4">ФА</button>
+                    </div>
+                    <div class="music_row">
+                        <button class="music_btn" id="music5" data-sound="sound5">СОЛЬ</button>
+                        <button class="music_btn" id="music6" data-sound="sound6">ЛЯ</button>
+                        <button class="music_btn" id="music7" data-sound="sound7">СИ</button>
+                        <button class="music_btn" id="music8" data-sound="sound8">ДО²</button>
+                    </div>
+                </div>
+
+                <div class="music_controls">
+                    <button class="record_btn" id="recordBtn">
+                        <div class="circle"></div> ЗАПИСЬ
+                    </button>
+                    <button class="play_btn" id="playBtn">▶ ПРОИГРАТЬ</button>
+                </div>
+            </div>
+            <div class="screen4_text">В 65 километрах от Москвы функционирует<br>
+                «А-Ферма». Опираясь на исследования<br>зоопсихологов о влиянии звукового фона<br>
+                на продуктивность, коровам включают<br>классическую музыку. </div>
+        </div>
+        <div class="screen4_bottom">
+            <div class="cows">
+                <div class="cow_left"></div>
+                <div class="cow_right"></div>
+            </div>
+            <div class="cows_floor"></div>
+        </div>
+
+    </div>
+    <div class="screen5">
+        <div class="house" id="house">
+            <div class="window" id="window1" data-info="Первый лесной отель появился в Швеции в 1960 году">
+                <img src="assets/images/window1.svg" class="diamond_img" alt="окно">
+            </div>
+            <div class="window" id="window2"
+                data-info="Treehotel состоит из 7 уникальных номеров, включая 'UFO' и 'Зеркальный куб'">
+                <img src="assets/images/window2.svg" class="diamond_img" alt="окно">
+            </div>
+            <div class="window" id="window3"
+                data-info="Самый высокий отель на дереве находится в Австралии на высоте 30 метров">
+                <img src="assets/images/window3.svg" class="diamond_img" alt="окно">
+            </div>
+            <div class="window" id="window4"
+                data-info="В Японии лесные ванны (синрин-йоку) признаны официальной терапией">
+                <img src="assets/images/window4.svg" class="diamond_img" alt="окно">
+            </div>
+        </div>
+        <div class="house_floor">Информация появляентся при нажатии на окна </div>
+    </div>
+    <div class="window_popup" id="windowPopup" style="display: none;">
+        <div class="window_popup_content">
+            <button class="window_popup_close" id="closeWindowPopup">×</button>
+            <div class="window_popup_text" id="windowPopupText"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer_top">Борисова Виктория</div>
+        <div class="footer_bottom">
+            <p>БРИЦП252</p>
+            <div class="footer_title">HSE ART&DESIGN SCHOOL</div>
+            <p>2025</p>
+        </div>
+    </footer>
+    <script src="./script.js" defer></script>
+</body>
+
+</html>
