@@ -55,6 +55,8 @@
     gap: 15px;
     position: relative;
     width: 100%;
+    margin-top: auto;
+    min-height: 200px;
 }
 
 .screen1_bottom_box {
@@ -76,14 +78,29 @@
     cursor: grabbing;
 }
 
+
 .screen1_bottom_floor {
     display: flex;
     background-image: url(../assets/images/floor.svg);
     width: 1218px;
     height: 183px;
     position: relative;
+    z-index: 99;
+    pointer-events: none;
+    transition: none;
+    margin-top: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
+.screen1_bottom_floor.build_active {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin-top: 0 !important;
+    z-index: 1000 !important;
+}
 .falling_items_container {
     position: absolute;
     top: 0;
@@ -262,7 +279,6 @@
 .puzzle_piece {
     cursor: grab;
     object-fit: contain;
-    transition: opacity 0.3s;
 }
 
 .puzzle_piece:active {
@@ -437,7 +453,6 @@
     width: 170px;
     height: 90px;
     border: 7px solid #868686;
-    background-color: transparent;
     color: white;
     background-color: #A10101;
     font-family: 'Roboto', sans-serif;
@@ -648,7 +663,6 @@
     font-family: 'Roboto', sans-serif;
     font-size: 28px;
     color: white;
-    text-transform: uppercase;
     line-height: 1.4;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -745,567 +759,256 @@ footer{
 .footer_title{
     font-size: 90px;
 }
-@media (max-width: 1600px) {
-    .timeline-item.visible {
-        right: 630px;
-    }
-    /* ==================== АДАПТИВНОСТЬ ==================== */
+.puzzle-description-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #A10101;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+    color: white;
+    font-size: 20px;
+}
 
-/* 1920x1080 - стандартные десктопы */
 @media (max-width: 1920px) and (min-width: 1561px) {
-    .screen1_top {
-        gap: 600px;
-    }
-    .screen1_top_left, .screen1_top_right {
-        width: 300px;
-        font-size: 70px;
-    }
-    .screen1_bottom_floor {
-        width: 1000px;
-    }
-    .puzzle_content, .pieces_container {
-        width: 700px;
-    }
-    .screen3_title {
-        width: 750px;
-        font-size: 70px;
-    }
-    .wall {
-        width: 600px;
-    }
-    .arch {
-        width: 500px;
-    }
-    .timeline_item {
-        font-size: 26px;
-        padding: 15px 30px;
-    }
-    .house_floor {
-        width: 1100px;
-        font-size: 28px;
-    }
-    .footer_bottom {
-        gap: 180px;
-    }
-    .footer_top {
-        font-size: 70px;
-    }
-    .footer_title {
-        font-size: 70px;
-    }
-    .footer_bottom p {
-        font-size: 40px;
-    }
+    .screen1_top { gap: 600px; }
+    .screen1_top_left, .screen1_top_right { width: 300px; font-size: 70px; }
+    .screen1_bottom_floor { width: 1000px; }
+    .puzzle_content, .pieces_container { width: 700px; }
+    .screen3_title { width: 750px; font-size: 70px; }
+    .wall { width: 600px; }
+    .arch { width: 500px; }
+    .timeline_item { font-size: 26px; padding: 15px 30px; }
+    .house_floor { width: 1100px; font-size: 28px; }
+    .footer_bottom { gap: 180px; }
+    .footer_top, .footer_title { font-size: 70px; }
+    .footer_bottom p { font-size: 40px; }
 }
 
-/* 1560x1040 - ваш текущий размер (базовый) */
-/* Уже есть в вашем CSS, оставляем как есть */
-
-/* 1200x800 - маленькие десктопы и ноутбуки */
 @media (max-width: 1200px) {
-    .screen1 {
-        padding: 30px;
-        gap: 300px;
-    }
-    .screen1_top {
-        gap: 400px;
-    }
-    .screen1_top_left, .screen1_top_right {
-        width: 250px;
-        font-size: 55px;
-    }
-    .screen1_bottom_floor {
-        width: 800px;
-        height: 140px;
-        background-size: contain;
-    }
-    .screen1_bottom_box {
-        width: 200px;
-        height: 68px;
-        background-size: contain;
-    }
+    .screen1 { padding: 30px; gap: 300px; }
+    .screen1_top { gap: 400px; }
+    .screen1_top_left, .screen1_top_right { width: 250px; font-size: 55px; }
+    .screen1_bottom_floor { width: 800px; height: 140px; background-size: contain; }
+    .screen1_bottom_box { width: 200px; height: 68px; background-size: contain; }
     
-    .screen2 {
-        padding: 100px 0px 80px;
-    }
-    .puzzle_content, .pieces_container {
-        width: 600px;
-        height: 450px;
-    }
-    .text_content_puzzle {
-        font-size: 18px;
-        padding: 10px;
-    }
-    .puzzle_piece {
-        width: 80px;
-        height: 80px;
-    }
-    .pieces_container {
-        gap: 15px;
-        padding: 15px;
-    }
+    .screen2 { padding: 100px 0px 80px; }
+    .puzzle_content, .pieces_container { width: 600px; height: 450px; }
+    .text_content_puzzle { font-size: 18px; padding: 10px; }
+    .puzzle_piece { width: 80px; height: 80px; }
+    .pieces_container { gap: 15px; padding: 15px; }
     
-    .screen3 {
-        min-height: 80vh;
-    }
-    .screen3_left_part {
-        gap: 80px;
-    }
-    .screen3_title {
-        width: 550px;
-        height: 120px;
-        font-size: 48px;
-    }
-    .wall {
-        width: 500px;
-        height: 500px;
-        background-size: contain;
-    }
-    .arch {
-        width: 400px;
-        height: 700px;
-        background-size: contain;
-    }
-    .timeline_item {
-        font-size: 20px;
-        padding: 12px 24px;
-    }
+    .screen3 { min-height: 80vh; }
+    .screen3_left_part { gap: 80px; }
+    .screen3_title { width: 550px; height: 120px; font-size: 48px; }
+    .wall { width: 500px; height: 500px; background-size: contain; }
+    .arch { width: 400px; height: 700px; background-size: contain; }
+    .timeline_item { font-size: 20px; padding: 12px 24px; }
     
-    .screen4 {
-        padding: 60px 30px 0px;
-        gap: 30px;
-    }
-    .screen4_top {
-        gap: 40px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .music_btn {
-        width: 120px;
-        height: 70px;
-        font-size: 18px;
-    }
-    .record_btn, .play_btn {
-        width: 150px;
-        height: 60px;
-        font-size: 18px;
-    }
-    .screen4_text {
-        width: 450px;
-        height: 180px;
-        font-size: 18px;
-    }
-    .cow_left {
-        width: 280px;
-        height: 160px;
-    }
-    .cow_right {
-        width: 360px;
-        height: 210px;
-    }
-    .cows_floor {
-        width: 700px;
-        height: 170px;
-        background-size: contain;
-    }
+    .screen4 { padding: 60px 30px 0px; gap: 30px; }
+    .screen4_top { gap: 40px; flex-wrap: wrap; justify-content: center; }
+    .music_btn { width: 120px; height: 70px; font-size: 18px; }
+    .record_btn, .play_btn { width: 150px; height: 60px; font-size: 18px; }
+    .screen4_text { width: 450px; height: 180px; font-size: 18px; }
+    .cow_left { width: 280px; height: 160px; }
+    .cow_right { width: 360px; height: 210px; }
+    .cows_floor { width: 700px; height: 170px; background-size: contain; }
     
-    .screen5 {
-        padding: 60px 30px 20px;
-    }
-    .house {
-        width: 450px;
-        height: 525px;
-    }
-    .house_floor {
-        width: 900px;
-        height: 120px;
-        font-size: 24px;
-        padding: 0px 0px 20px;
-        background-size: contain;
-    }
-    .window {
-        width: 30px;
-        height: 30px;
-    }
-    .diamond_img {
-        width: 100%;
-        height: 100%;
-    }
-    #window1 {
-        width: 45px;
-        height: 45px;
-        top: 38%;
-        left: 27%;
-    }
-    #window2 {
-        top: 20%;
-        left: 64%;
-    }
-    #window3 {
-        top: 45%;
-        left: 72%;
-    }
-    #window4 {
-        top: 61%;
-        left: 67%;
-    }
+    .screen5 { padding: 60px 30px 20px; }
+    .house { width: 450px; height: 525px; }
+    .house_floor { width: 900px; height: 120px; font-size: 24px; padding: 0px 0px 20px; background-size: contain; }
+    .window { width: 30px; height: 30px; }
+    #window1 { width: 45px; height: 45px; top: 38%; left: 27%; }
+    #window2 { top: 20%; left: 64%; }
+    #window3 { top: 45%; left: 72%; }
+    #window4 { top: 61%; left: 67%; }
     
-    .footer_bottom {
-        gap: 100px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .footer_top {
-        font-size: 50px;
-    }
-    .footer_title {
-        font-size: 50px;
-    }
-    .footer_bottom p {
-        font-size: 30px;
-    }
+    .footer_bottom { gap: 100px; flex-wrap: wrap; justify-content: center; }
+    .footer_top, .footer_title { font-size: 50px; }
+    .footer_bottom p { font-size: 30px; }
 }
 
-/* 768x1024 - планшеты вертикально */
 @media (max-width: 768px) {
-    .screen1 {
-        padding: 20px;
-        gap: 200px;
-    }
-    .screen1_top {
-        gap: 150px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .screen1_top_left, .screen1_top_right {
-        width: 200px;
-        font-size: 40px;
-    }
     .screen1_bottom_floor {
         width: 600px;
         height: 100px;
+        background-size: contain;
     }
-    .screen1_bottom_box {
-        width: 160px;
-        height: 55px;
+    .screen1_bottom_floor.build_active {
+        width: 600px !important;
+        height: 100px !important;
     }
-    
-    .screen2 {
-        padding: 60px 0px 50px;
+    .screen2 { padding: 60px 0px 50px; }
+    .puzzle_content, .pieces_container { 
+        width: 450px; 
+        height: auto; 
+        min-height: 327px;
+        aspect-ratio: 785 / 545; 
     }
-    .puzzle_content, .pieces_container {
+    .puzzle_content {
+        height: auto;
+        min-height: 313px;
+    }
+    .pieces_container {
         width: 450px;
-        height: 350px;
-    }
-    .text_content_puzzle {
-        font-size: 14px;
-        padding: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     .puzzle_piece {
         width: 60px;
         height: 60px;
     }
-    .pieces_container {
-        gap: 10px;
-        padding: 10px;
+    .text_content_puzzle { 
+        font-size: 14px; 
+        padding: 8px;
+        display: none;
     }
+    .text_content_puzzle.show { display: flex; }
     
-    .screen3_left_part {
-        gap: 50px;
-    }
-    .screen3_title {
-        width: 350px;
-        height: 80px;
-        font-size: 32px;
-    }
-    .wall {
-        width: 350px;
-        height: 350px;
-    }
-    .arch {
-        width: 280px;
-        height: 500px;
-    }
-    .timeline_item {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-    #timeline1, #timeline2, #timeline3, #timeline4 {
-        top: auto;
-        position: relative;
-        left: 0;
-        margin: 10px 0;
-        white-space: normal;
-        width: 90%;
-        text-align: center;
-    }
-    .timeline_texts {
-        position: relative;
+    .puzzle-description-btn {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
+        margin: 10px auto;
+    }
+     .screen3 { 
+        flex-direction: row; 
+        align-items: flex-start; 
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .arch { display: none; } 
+    .screen3_left_part { 
+        width: auto; 
+        align-items: center; 
+        gap: 30px;
+    }
+    .screen3_title { 
+        width: 90%; 
+        font-size: 32px; 
+        height: auto; 
+        padding: 20px;
+        margin: 0 auto;
+    }
+    .wall { 
+        width: 90%; 
+        max-width: 500px;
+        height: auto; 
+        background-size: contain; 
+        background-repeat: no-repeat;
+        aspect-ratio: 730 / 680;
+    }
+    .timeline_texts { 
+        position: relative; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 15px; 
         margin-top: 20px;
+        width: 100%;
     }
-    .timeline_item {
-        left: 0;
-        opacity: 0;
+    .timeline_item { 
+        position: relative; 
+        left: 0; 
+        opacity: 0; 
         transition: opacity 0.5s;
+        width: 90%;
+        margin: 0 auto;
+        white-space: normal;
+        text-align: center;
+        font-size: 16px;
+        padding: 12px 20px;
     }
-    .timeline_item.visible {
-        opacity: 1;
-        left: 0;
+    .timeline_item.visible { opacity: 1; left: 0; }
+    .cow_right { display: none; }
+    .cow_left { 
+        width: 280px; 
+        height: 160px;
+        transform: scaleX(-1);
+        margin: 0 auto;
+    }
+    .cows { 
+        justify-content: center;
+    }
+    .cows_floor { 
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        background-size: contain;
+        background-repeat: no-repeat;
+        aspect-ratio: 965 / 227;
     }
     
-    .screen4 {
-        padding: 40px 20px 0px;
+    .screen4_text {
+        width: 280px;
+        height: auto;
+        min-height: 150px;
+        font-size: 14px;
+        padding: 15px;
     }
     .music_btn {
-        width: 80px;
+        width: 70px;
         height: 60px;
         font-size: 14px;
     }
+    .music_row {
+        gap: 10px;
+    }
     .record_btn, .play_btn {
-        width: 110px;
+        width: 100px;
         height: 50px;
         font-size: 14px;
-    }
-    .screen4_text {
-        width: 300px;
-        height: 150px;
-        font-size: 14px;
-    }
-    .cow_left {
-        width: 180px;
-        height: 100px;
-    }
-    .cow_right {
-        width: 230px;
-        height: 135px;
-    }
-    .cows_floor {
-        width: 450px;
-        height: 110px;
-    }
-    
-    .screen5 {
-        padding: 40px 20px 20px;
-    }
-    .house {
-        width: 320px;
-        height: 375px;
-    }
-    .house_floor {
-        width: 550px;
-        height: 90px;
-        font-size: 16px;
-        padding: 0px 0px 15px;
-    }
-    .window {
-        width: 22px;
-        height: 22px;
-    }
-    .diamond_img {
-        width: 100%;
-        height: 100%;
-    }
-    #window1 {
-        width: 32px;
-        height: 32px;
-        top: 37%;
-        left: 26%;
-    }
-    #window2 {
-        top: 19%;
-        left: 63%;
-    }
-    #window3 {
-        top: 44%;
-        left: 71%;
-    }
-    #window4 {
-        top: 60%;
-        left: 66%;
-    }
-    
-    .footer_bottom {
-        gap: 40px;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .footer_top {
-        font-size: 32px;
-        text-align: center;
-    }
-    .footer_title {
-        font-size: 32px;
-    }
-    .footer_bottom p {
-        font-size: 20px;
     }
 }
 
-/* 320x475 - мобильные телефоны */
 @media (max-width: 480px) {
-    .screen1 {
-        padding: 15px;
-        gap: 100px;
-    }
-    .screen1_top {
-        gap: 50px;
-    }
-    .screen1_top_left, .screen1_top_right {
-        width: 140px;
-        font-size: 28px;
-    }
-    .screen1_bottom_floor {
-        width: 280px;
-        height: 50px;
-    }
-    .screen1_bottom_box {
-        width: 100px;
-        height: 35px;
-    }
+    .screen1 { padding: 15px; gap: 100px; }
+    .screen1_top { gap: 50px; }
+    .screen1_top_left, .screen1_top_right { width: 140px; font-size: 28px; }
+    .screen1_bottom_floor { width: 280px; height: 50px; }
+    .screen1_bottom_box { width: 100px; height: 35px; }
     
-    .screen2 {
-        padding: 40px 0px 30px;
-    }
-    .puzzle_content, .pieces_container {
-        width: 280px;
-        height: 220px;
-    }
-    .text_content_puzzle {
-        font-size: 10px;
-        padding: 5px;
-    }
-    .puzzle_piece {
-        width: 45px;
-        height: 45px;
-    }
-    .pieces_container {
-        gap: 8px;
-        padding: 8px;
-    }
+    .screen2 { padding: 40px 0px 30px; }
+    .puzzle_content, .pieces_container { width: 280px; height: 220px; }
+    .text_content_puzzle { font-size: 10px; padding: 5px; }
+    .puzzle_piece { width: 45px; height: 45px; }
+    .pieces_container { gap: 8px; padding: 8px; }
     
-    .screen3_title {
-        width: 260px;
-        height: 60px;
-        font-size: 22px;
+    .screen3_title { font-size: 22px; }
+    .timeline_item { font-size: 12px; padding: 8px 12px; }
+    .cow_right { display: none; }
+    .cow_left { 
+        width: 180px; 
+        height: 100px;
     }
-    .wall {
-        width: 220px;
-        height: 220px;
+    .cows_floor {
+        width: 270px;
+        height: auto;
+        aspect-ratio: 965 / 227;
     }
-    .arch {
-        width: 180px;
-        height: 320px;
-    }
-    .timeline_item {
+    .screen4_text {
+        width: 240px;
         font-size: 11px;
-        padding: 6px 12px;
+        padding: 10px;
     }
-    
     .music_btn {
         width: 55px;
         height: 45px;
         font-size: 11px;
-        border-width: 4px;
     }
     .music_row {
         gap: 8px;
     }
-    .record_btn, .play_btn {
-        width: 90px;
-        height: 40px;
-        font-size: 11px;
-    }
-    .circle, .square {
-        width: 12px;
-        height: 12px;
-    }
-    .screen4_text {
-        width: 240px;
-        height: 120px;
-        font-size: 11px;
-    }
-    .cow_left {
-        width: 110px;
-        height: 62px;
-    }
-    .cow_right {
-        width: 140px;
-        height: 82px;
-    }
-    .cows_floor {
-        width: 270px;
-        height: 66px;
-    }
     
-    .house {
-        width: 240px;
-        height: 280px;
-    }
-    .house_floor {
-        width: 280px;
-        height: 70px;
-        font-size: 11px;
-        padding: 0px 0px 10px;
-    }
-    .window {
-        width: 16px;
-        height: 16px;
-    }
-    .diamond_img {
-        width: 100%;
-        height: 100%;
-    }
-    #window1 {
-        width: 22px;
-        height: 22px;
-        top: 35%;
-        left: 24%;
-    }
-    #window2 {
-        width: 20px;
-        height: 20px;
-        top: 17%;
-        left: 62%;
-    }
-    #window3 {
-        width: 20px;
-        height: 20px;
-        top: 42%;
-        left: 70%;
-    }
-    #window4 {
-        width: 20px;
-        height: 20px;
-        top: 58%;
-        left: 65%;
-    }
+    .house_floor { font-size: 11px; padding: 10px; }
+    #window1 { width: 14%; top: 35%; left: 24%; }
+    #window2, #window3, #window4 { width: 9%; }
     
-    .popup_text, .window_popup_text {
-        font-size: 20px;
-    }
-    .summary_text {
-        font-size: 14px;
-    }
-    .popup_content, .window_popup_content, .summary_content {
-        padding: 20px;
-    }
+    .popup_text, .window_popup_text { font-size: 20px; }
+    .summary_text { font-size: 14px; }
+    .popup_content, .window_popup_content, .summary_content { padding: 20px; }
     
-    .footer_top {
-        font-size: 22px;
-    }
-    .footer_title {
-        font-size: 22px;
-    }
-    .footer_bottom p {
-        font-size: 14px;
-    }
-    .footer_bottom {
-        gap: 20px;
-    }
-}
+    .footer_top, .footer_title { font-size: 22px; }
+    .footer_bottom p { font-size: 14px; }
+    .footer_bottom { gap: 20px; }
 }

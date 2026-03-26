@@ -46,10 +46,14 @@ document.addEventListener('DOMContentLoaded', function () {
     initInteractiveHouse();
 });
 function startBuild() {
-
     score = 0;
     updateScore();
     buildActive = true;
+
+    if (screen1BottomFloor) {
+        screen1BottomFloor.classList.add('build_active');
+        screen1BottomFloor.style.width = '1218px';
+    }
 
     if (screen1BottomBox) {
         screen1BottomBox.style.cursor = 'grab';
@@ -64,19 +68,28 @@ function startBuild() {
         screen1BottomBox.style.left = startX + 'px';
     }
 
-    if (screen1BottomFloor) {
-        screen1BottomFloor.style.zIndex = '99';
-    }
-
     fallingInterval = setInterval(() => {
         if (buildActive) {
             createFallingItem();
         }
     }, 800);
 
-    document.addEventListener('mousemove', moveCatcher);
-    
     window.addEventListener('scroll', handleScroll);
+    document.addEventListener('mousemove', moveCatcher);
+    document.addEventListener('touchmove', moveCatcherTouch, { passive: false });
+}
+function moveCatcherTouch(e) {
+    if (!buildActive || !screen1BottomBox) return;
+    e.preventDefault();
+    
+    const touch = e.touches[0];
+    if (!touch) return;
+    
+    const fakeEvent = {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+    };
+    moveCatcher(fakeEvent);
 }
 function moveCatcher(e) {
     if (!buildActive || !screen1BottomBox) return;
@@ -212,13 +225,24 @@ function summaryBuild() {
         screen1BottomBox.style.bottom = '';
         screen1BottomBox.style.cursor = '';
         screen1BottomBox.style.display = 'flex';
-        screen1BottomBox.classList.remove('catcher_box');
+        screen1BottomBox.classList.remove('catcher-box');
     }
 
-    document.removeEventListener('mousemove', moveCatcher);
-    window.removeEventListener('scroll', handleScroll);
+    if (screen1BottomFloor) {
+        screen1BottomFloor.classList.remove('build_active');
+        screen1BottomFloor.style.position = '';
+        screen1BottomFloor.style.bottom = '';
+        screen1BottomFloor.style.left = '';
+        screen1BottomFloor.style.transform = '';
+        screen1BottomFloor.style.marginTop = '';
+        screen1BottomFloor.style.zIndex = '';
+        screen1BottomFloor.style.width = '';
+    }
 
     document.getElementById('summaryPopup').style.display = 'flex';
+    document.removeEventListener('mousemove', moveCatcher);
+    document.removeEventListener('touchmove', moveCatcherTouch);
+    window.removeEventListener('scroll', handleScroll);
 }
 
 
@@ -313,7 +337,15 @@ function createPuzzlePieces() {
     const puzzle = document.querySelector('.puzzle');
     puzzle.insertBefore(container, document.querySelector('.puzzle_content'));
 }
+const puzzleDescBtn = document.getElementById('puzzleDescBtn');
+const puzzleDescription = document.getElementById('puzzleDescription');
 
+if (puzzleDescBtn && puzzleDescription) {
+    puzzleDescBtn.addEventListener('click', function() {
+        puzzleDescription.classList.toggle('show');
+        this.classList.toggle('active');
+    });
+}
 
 
 
