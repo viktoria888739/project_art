@@ -759,7 +759,7 @@ footer{
 .footer_title{
     font-size: 90px;
 }
-.puzzle-description-btn {
+.puzzle_description_btn {
     display: none;
     align-items: center;
     justify-content: center;
@@ -868,7 +868,7 @@ footer{
     }
     .text_content_puzzle.show { display: flex; }
     
-    .puzzle-description-btn {
+    .puzzle_description_btn {
         display: flex;
         margin: 10px auto;
     }

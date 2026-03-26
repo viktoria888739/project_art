@@ -284,7 +284,7 @@ function makeDropZone(zone) {
             newPiece.style.cursor = 'move';
             newPiece.style.objectFit = 'contain';
 
-            newPiece.setAttribute('draggable', 'true');
+            newPiece.setAttribute('dragFble', 'true');
 
             newPiece.addEventListener('dragstart', (e) => {
                 e.dataTransfer.setData('text/plain', e.target.id);
