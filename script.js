@@ -420,20 +420,20 @@ function initAudio() {
 function playNote(frequency, duration = 0.3) {
     initAudio();
     
-    const oscillator = audioContext.createOscillator();
+    const generator = audioContext.creategenerator();
     const gainNode = audioContext.createGain();
     
-    oscillator.type = 'sine';
-    oscillator.frequency.value = frequency;
+    generator.type = 'sine';
+    generator.frequency.value = frequency;
     
     gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
     
-    oscillator.connect(gainNode);
+    generator.connect(gainNode);
     gainNode.connect(audioContext.destination);
     
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + duration);
+    generator.start();
+    generator.stop(audioContext.currentTime + duration);
 }
 
 const noteFrequencies = {
@@ -455,7 +455,7 @@ const noteNames = {
     sound5: 'СОЛЬ',
     sound6: 'ЛЯ',
     sound7: 'СИ',
-    sound8: 'ДО²'
+    sound8: 'ДО'
 };
 
 document.querySelectorAll('.music_btn').forEach(btn => {
